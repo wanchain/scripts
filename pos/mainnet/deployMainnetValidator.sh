@@ -109,7 +109,7 @@ sudo echo ''  >> ~/.wanchain/startGwan.sh
 if [ "$allowMonitor" == "Y" ] || [ "$allowMonitor" == "y" ]; then
     sudo echo "/bin/monitor.sh 1514 &" >> ~/.wanchain/startGwan.sh
 fi
-sudo echo "/bin/gwan --gcmode=${GCMODE} --miner.etherbase ${addrNew} --unlock ${addrNew} --password /root/.wanchain/pw.txt --mine --miner.threads=1 --ethstats ${YOUR_NODE_NAME}:wanchainmainnetvalidator@wanstats.io" >> ~/.wanchain/startGwan.sh
+sudo echo "/bin/gwan --gcmode=${GCMODE} --miner.etherbase ${addrNew} --unlock ${addrNew} --password /root/.wanchain/pw.txt --mine --miner.threads=1 --miner.gasprice 0 --ethstats ${YOUR_NODE_NAME}:wanchainmainnetvalidator@wanstats.io" >> ~/.wanchain/startGwan.sh
 sudo chmod 755 ~/.wanchain/startGwan.sh
 
 IPCFILE="$HOME/.wanchain/gwan.ipc"
