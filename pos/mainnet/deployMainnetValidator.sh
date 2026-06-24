@@ -21,7 +21,7 @@ read -p "Do you want save your password to disk for auto restart? (N/y): " savep
 read -p "Do you want to upload the host information (CPU, Memory, Disk, etc.) to the Wanchain log server? (N/y): " allowMonitor
 
 
-DOCKERIMG=wanchain/client-go:3.0.2
+DOCKERIMG=wanchain/client-go:3.0.3
 GCMODE='full'
 if [ "$GCMODEENV" = "archive" ]; then
     GCMODE='archive'
