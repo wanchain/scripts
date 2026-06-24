@@ -1,6 +1,6 @@
 #!/bin/bash
 # set -x
-DOCKERIMG=wanchain/client-go:3.0.2
+DOCKERIMG=wanchain/client-go:3.0.3
 
 echo ''
 echo ''
