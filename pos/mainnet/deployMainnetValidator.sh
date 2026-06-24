@@ -21,7 +21,7 @@ read -p "Do you want save your password to disk for auto restart? (N/y): " savep
 read -p "Do you want to upload the host information (CPU, Memory, Disk, etc.) to the Wanchain log server? (N/y): " allowMonitor
 
 
-DOCKERIMG=wanchain/client-go:3.0.2
+DOCKERIMG=wanchain/client-go:3.0.3
 GCMODE='full'
 if [ "$GCMODEENV" = "archive" ]; then
     GCMODE='archive'
@@ -109,7 +109,7 @@ sudo echo ''  >> ~/.wanchain/startGwan.sh
 if [ "$allowMonitor" == "Y" ] || [ "$allowMonitor" == "y" ]; then
     sudo echo "/bin/monitor.sh 1514 &" >> ~/.wanchain/startGwan.sh
 fi
-sudo echo "/bin/gwan --gcmode=${GCMODE} --miner.etherbase ${addrNew} --unlock ${addrNew} --password /root/.wanchain/pw.txt --mine --miner.threads=1 --ethstats ${YOUR_NODE_NAME}:wanchainmainnetvalidator@wanstats.io" >> ~/.wanchain/startGwan.sh
+sudo echo "/bin/gwan --gcmode=${GCMODE} --miner.etherbase ${addrNew} --unlock ${addrNew} --password /root/.wanchain/pw.txt --mine --miner.threads=1 --miner.gasprice 0 --ethstats ${YOUR_NODE_NAME}:wanchainmainnetvalidator@wanstats.io" >> ~/.wanchain/startGwan.sh
 sudo chmod 755 ~/.wanchain/startGwan.sh
 
 IPCFILE="$HOME/.wanchain/gwan.ipc"
