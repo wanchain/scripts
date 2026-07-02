@@ -1,6 +1,6 @@
 #!/bin/bash
 # set -x
-DOCKERIMG=wanchain/client-go:3.0.3
+DOCKERIMG=wanchain/client-go:3.0.4
 
 echo ''
 echo ''
@@ -90,7 +90,7 @@ if [ -f $HOME/gwandata.tgz ]; then
         # check if there is 90G free disk space. for tar 
         if [ "$allowDelete" == "Y" ] || [ "$allowDelete" == "y" ]; then
             sudo docker stop gwan >/dev/null 2>&1
-            localBlockNumber=$(sudo docker run --rm --privileged -v ~/.wanchain:/root/.wanchain wanchain/client-go:3.0.3 /bin/gwan  console --exec "eth.blockNumber" 2>/dev/null)
+            localBlockNumber=$(sudo docker run --rm --privileged -v ~/.wanchain:/root/.wanchain wanchain/client-go:3.0.4 /bin/gwan  console --exec "eth.blockNumber" 2>/dev/null)
             localBlockNumberOk=$?
             echo $localBlockNumberOk $localBlockNumber
             sudo rm -rf $HOME/.wanchain/gwan/chaindata
@@ -119,7 +119,7 @@ if [ -d $HOME/gwandatatmp/gwan/avgretdb ]; then
     sudo mkdir -p $HOME/.wanchain
     if [ -d $HOME/.wanchain/gwan/avgretdb ]; then
         if (($localBlockNumberOk != 0)); then
-	        localBlockNumber=$(sudo docker run --rm --privileged -v ~/.wanchain:/root/.wanchain wanchain/client-go:3.0.3 /bin/gwan  console --exec "eth.blockNumber" 2>/dev/null)
+	        localBlockNumber=$(sudo docker run --rm --privileged -v ~/.wanchain:/root/.wanchain wanchain/client-go:3.0.4 /bin/gwan  console --exec "eth.blockNumber" 2>/dev/null)
 	        localBlockNumberOk=$?
 	        echo $localBlockNumberOk $localBlockNumber
         fi
