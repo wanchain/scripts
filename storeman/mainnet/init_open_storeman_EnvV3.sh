@@ -32,4 +32,3 @@ output=`sudo docker pull containrrr/watchtower 1>&2`
 echo '*********** open-storeman init Env *********** Download containrrr/watchtower docker image done!'
 
 echo '*********** open-storeman init Env *********** Init evn done!'
-
