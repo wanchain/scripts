@@ -200,10 +200,6 @@ chain3='EOS'
 url3=''
 # add3=''
 
-# mpc use rpc
-mpcip='127.0.0.1'
-mpcport=8545
-
 # mpc use ipc
 mpcipcDir=$workPath'/data/'
 mpcipcFile=$mpcipcDir'gwan.ipc'
@@ -325,7 +321,7 @@ if [ "$isTestnet" == true ]; then
 		"name"       : "storeman_agent",
 		"script"      : "wanchain-js-storeman-linux",
 		"cwd"         : "agent",
-		"args"        : "-i '$index' --loglevel '$loglevel' --testnet --waddress '$waddress' --chain1 '$chain1' --url1 '$url1' --chain2 '$chain2' --url2 '$url2' --password /osm/pwd.json --keystore /osm/keystore/ --dbip '$dbip' --dbport '$dbport' --mpc --mpcip '$mpcip' --mpcport 8545 --mpcipc /osm/schnorrmpc/data/gwan.ipc --mpcpath /osm/schnorrmpc/data",
+		"args"        : "-i '$index' --loglevel '$loglevel' --testnet --waddress '$waddress' --chain1 '$chain1' --url1 '$url1' --chain2 '$chain2' --url2 '$url2' --password /osm/pwd.json --keystore /osm/keystore/ --dbip '$dbip' --dbport '$dbport' --mpc --mpcipc /osm/schnorrmpc/data/gwan.ipc --mpcpath /osm/schnorrmpc/data",
 		"log_date_format"  : "YYYY-MM-DD HH:mm Z",
 	    "env": {
 	    	"NODE_OPTIONS": "--max-old-space-size=5296",
@@ -354,7 +350,7 @@ else
 		"name"       : "storeman_agent",
 		"script"      : "wanchain-js-storeman-linux",
 		"cwd"         : "agent",
-		"args"        : "-i '$index' --loglevel '$loglevel' --waddress '$waddress' --chain1 '$chain1' --url1 '$url1' --chain2 '$chain2' --url2 '$url2' --password /osm/pwd.json --keystore /osm/keystore/ --dbip '$dbip' --dbport '$dbport' --mpc --mpcip '$mpcip' --mpcport 8545 --mpcipc /osm/schnorrmpc/data/gwan.ipc --mpcpath /osm/schnorrmpc/data",
+		"args"        : "-i '$index' --loglevel '$loglevel' --waddress '$waddress' --chain1 '$chain1' --url1 '$url1' --chain2 '$chain2' --url2 '$url2' --password /osm/pwd.json --keystore /osm/keystore/ --dbip '$dbip' --dbport '$dbport' --mpc --mpcipc /osm/schnorrmpc/data/gwan.ipc --mpcpath /osm/schnorrmpc/data",
 		"log_date_format"  : "YYYY-MM-DD HH:mm Z",
 		"env": {
 	    	"NODE_OPTIONS": "--max-old-space-size=5296"
@@ -382,7 +378,7 @@ if [ "$savepasswd" == "Y" ] || [ "$savepasswd" == "y" ]; then
 	cmd="sudo docker run --log-opt max-size=200m --log-opt max-file=3 \
 	--name $container \
 	--network $dockernet \
-	-p $p2pPort:$p2pPort -p $p2pPort:$p2pPort/udp -p $mpcport:8545 \
+	-p $p2pPort:$p2pPort -p $p2pPort:$p2pPort/udp \
 	-v $password:/osm/pwd.json \
 	-v $keystore:/osm/keystore \
 	-v $mpcpath:/osm/schnorrmpc/data \
@@ -394,7 +390,7 @@ else
 	cmd="sudo docker run --log-opt max-size=200m --log-opt max-file=3 \
 	--name $container \
 	--network $dockernet \
-	-p $p2pPort:$p2pPort -p $p2pPort:$p2pPort/udp -p $mpcport:8545 \
+	-p $p2pPort:$p2pPort -p $p2pPort:$p2pPort/udp \
 	-v $password:/osm/pwd.json \
 	-v $keystore:/osm/keystore \
 	-v $mpcpath:/osm/schnorrmpc/data \
